@@ -13,8 +13,8 @@ function numeric_onkeypress(o, e) {
     }
 }
 
-function countchar(str, c) {
-    return str.split(c).length;
+function countchar(haystack, needle) {
+    return haystack.split(needle).length;
 }
 
 function numeric_onblur(o) {
@@ -34,7 +34,7 @@ function numeric_onblur(o) {
         var t = priceRegex.test(val);
         if (t) {
             var n = Number(val).toFixed(2);
-            var s = addcommas(n);
+            var s = addCommas(n);
             $(o).val(s);
         }
         else {
@@ -46,7 +46,7 @@ function numeric_onblur(o) {
 
             if (isvalid) {
                 var n = Number(val).toFixed(2);
-                var s = addcommas(n);
+                var s = addCommas(n);
                 $(o).val(s);
             }
         }
@@ -56,22 +56,22 @@ function numeric_onblur(o) {
     }
 }
 
-function addcommas(val) {
+function addCommas(val) {
     var whole = "";
     val = val.replace(",", "");
-    var s = val.split('.');
-    var t = Array.from(s[0]);
-    t = t.reverse();
-    for (var i = 0; i < t.length; i++) {
+    var splitted = val.split('.');
+    var tempDigits = Array.from(splitted[0]);
+    tempDigits = tempDigits.reverse();
+    for (var i = 0; i < tempDigits.length; i++) {
         if (i > 0 && i % 3 == 0) {
-            whole = t[i] + "," + whole;
+            whole = tempDigits[i] + "," + whole;
         }
         else {
-            whole = t[i] + whole;
+            whole = tempDigits[i] + whole;
         }
     }
     if (whole.startsWith("-,")) {
         whole = whole.replace("-,", "-");
     }
-    return whole + "." + s[1];
+    return whole + "." + splitted[1];
 }
