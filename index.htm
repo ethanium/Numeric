@@ -2,14 +2,36 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Numeric</title>
+    <title>Numeric Input with 2 Decimal Places</title>
     <link href="numeric.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-            crossorigin="anonymous"></script>
     <script src="numeric.js"></script>
 </head>
 <body>
-    <input id="Text1" type="text" class="numeric"/>
+    <style>
+        .container {
+            height: 100vh;
+            position: relative;
+        }
+
+        .vertical-center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            text-align: center;
+            width: 100%;
+        }
+
+        input {
+            font-size: larger;
+        }
+    </style>
+    <div class="container">
+        <div class="vertical-center">
+            <input type="text" class="numeric" placeholder="Type any number" />
+            <input type="submit" value="submit" />
+        </div>
+    </div>
 </body>
 </html>
